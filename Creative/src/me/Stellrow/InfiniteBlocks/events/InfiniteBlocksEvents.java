@@ -13,6 +13,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -144,4 +145,40 @@ public class InfiniteBlocksEvents implements Listener {
             }
         }
     }
+
+
+    @EventHandler
+    public void onCommand(PlayerCommandPreprocessEvent event){
+        String[] message = event.getMessage().split(" ");
+        if(pl.blockedCommands.contains(event.getMessage().split("/")[1])){
+            Player sender = event.getPlayer();
+            for(ItemStack i : sender.getInventory().getContents()){
+                if(i==null||!i.hasItemMeta()){
+                    return;
+                }
+                if(i.getItemMeta().getPersistentDataContainer().has(pl.pluginKey,PersistentDataType.STRING)){
+                    event.setCancelled(true);
+                    sender.sendMessage(Utils.asColor(pl.getConfig().getString("CommandMessages.blocked-command")));
+                    return;
+                }
+            }
+        }
+           for(String word : message){
+               if(pl.blockedCommands.contains(word)){
+                   Player sender = event.getPlayer();
+                   for(ItemStack i : sender.getInventory().getContents()){
+                       if(i==null||!i.hasItemMeta()){
+                           return;
+                       }
+                       if(i.getItemMeta().getPersistentDataContainer().has(pl.pluginKey,PersistentDataType.STRING)){
+                            event.setCancelled(true);
+                            sender.sendMessage(Utils.asColor(pl.getConfig().getString("CommandMessages.blocked-command")));
+                           return;
+                       }
+                   }
+               }
+           }
+
+        }
+
 }

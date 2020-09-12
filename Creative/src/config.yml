@@ -1,6 +1,10 @@
 CommandMessages:
   no-permission: '&cYou dont have permission to use this command!'
+  blocked-command: '&cYou are not allowed to use this command while having a creative item in the inventory!'
 
+
+BlockedCommands:
+  - shop
 ItemConfig:
   name: '&cCreative &7| &a%type'
   lore:

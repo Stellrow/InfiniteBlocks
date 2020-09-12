@@ -6,7 +6,6 @@ import me.Stellrow.InfiniteBlocks.inventory.InventoryManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ public class InfiniteBlocks extends JavaPlugin {
     //
     public HashMap<String, Map<Integer, List<Material>>> menu = new HashMap<>();
     public NamespacedKey pluginKey = new NamespacedKey(this,"infiniteblock");
+    public List<String> blockedCommands = new ArrayList<>();
 
 
     public void onEnable(){
@@ -29,6 +29,7 @@ public class InfiniteBlocks extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InfiniteBlocksEvents(this),this);
         getServer().getPluginManager().registerEvents(inventoryManager,this);
         setUpValues();
+        setupBlockedCommands();
         inventoryManager.setup(menu);
     }
     public void onDisable(){
@@ -62,6 +63,13 @@ public class InfiniteBlocks extends JavaPlugin {
             menu.put(category,pages);
         }
 
+    }
+    private void setupBlockedCommands(){
+        for(String s : getConfig().getStringList("BlockedCommands")){
+            blockedCommands.add(s);
+            blockedCommands.add(s.toLowerCase());
+            blockedCommands.add(s.toUpperCase());
+        }
     }
     private void log(String message){
         Bukkit.getConsoleSender().sendMessage(message);
