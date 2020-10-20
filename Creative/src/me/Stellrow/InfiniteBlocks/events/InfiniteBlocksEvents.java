@@ -149,6 +149,24 @@ public class InfiniteBlocksEvents implements Listener {
 
     @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent event){
+        if(event.getMessage().split(" ")[0].split("/")[1].equalsIgnoreCase("gm")&&event.getMessage().split(" ")[1].equalsIgnoreCase("1")){
+            if(event.getPlayer().hasPermission("creative.use")){
+                if(event.getPlayer().isOp()){
+                    return;
+                }
+                pl.getInventoryManager().openInventory(event.getPlayer());
+                event.setCancelled(true);
+            }
+        }
+        if(event.getMessage().split(" ")[0].split("/")[1].equalsIgnoreCase("gamemode")&&event.getMessage().split(" ")[1].equalsIgnoreCase("1")){
+            if(event.getPlayer().hasPermission("creative.use")){
+                if(event.getPlayer().isOp()){
+                    return;
+                }
+                pl.getInventoryManager().openInventory(event.getPlayer());
+                event.setCancelled(true);
+            }
+        }
         String[] message = event.getMessage().split(" ");
         if(pl.blockedCommands.contains(event.getMessage().split("/")[1])){
             Player sender = event.getPlayer();

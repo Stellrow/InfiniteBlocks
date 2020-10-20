@@ -192,10 +192,7 @@ public class InventoryManager implements Listener {
     //Cancel taking out of inventory
     @EventHandler
     public void cancelClick(InventoryClickEvent event){
-        if(event.getClickedInventory()==null){
-            return;
-        }
-        if(event.getClickedInventory().equals(mainPage)){
+        if(event.getInventory().equals(mainPage)){
             event.setCancelled(true);
             if(event.getCurrentItem()==null){
                return;
