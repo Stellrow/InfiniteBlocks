@@ -1,0 +1,91 @@
+CommandMessages:
+  no-permission: '&cYou dont have permission to use this command!'
+  blocked-command: '&cYou are not allowed to use this command while having a creative item in the inventory!'
+
+
+BlockedCommands:
+  - shop
+ItemConfig:
+  name: '&cCreative &7| &a%type'
+  lore:
+    - '&7A infinite block designed for creative players'
+    - '&7This block can only be used by the players with permission!'
+  who-took: '&7This block was created by : &c%playerName'
+BlockPlacing:
+  no-permission: '&cYou dont have permission to use this block!'
+CategoryButtons:
+  mainPage:
+    type: DIAMOND
+    name: '&aBack to main page!'
+    lore:
+      - '&7Click here to go back to main page!'
+  lastPage:
+    type: ARROW
+    name: '&cPrevious page'
+    lore:
+      - '&7Click here to go back to previous page!'
+  nextPage:
+    type: ARROW
+    name: '&cNext page'
+    lore:
+      - '&7Click here to go back to next page!'
+CategoryConfig:
+  'dirt':
+    slot: 10
+    type: DIRT
+    name: '&4Dirt'
+    lore:
+      - '&7Click here to open this category'
+    category-to-open: 'dirt'
+  'stone':
+    slot: 12
+    type: STONE
+    name: '&7Stone'
+    lore:
+      - '&7Click here to open this category'
+    category-to-open: 'stone'
+Category:
+  dirt:
+    0:
+      - GRASS_BLOCK
+      - DIRT
+      - COARSE_DIRT
+      - PODZOL
+      - CRIMSON_NYLIUM
+      - WARPED_NYLIUM
+      - SAND
+      - RED_SAND
+      - GRAVEL
+  stone:
+    0:
+      - STONE
+      - GRANITE
+      - POLISHED_GRANITE
+      - DIORITE
+      - POLISHED_DIORITE
+      - ANDESITE
+      - POLISHED_ANDESITE
+      - COBBLESTONE
+      - OAK_PLANKS
+      - SPRUCE_PLANKS
+      - BIRCH_PLANKS
+      - JUNGLE_PLANKS
+      - ACACIA_PLANKS
+      - DARK_OAK_PLANKS
+      - CRIMSON_PLANKS
+      - WARPED_PLANKS
+      - OAK_LOG
+      - SPRUCE_LOG
+      - BIRCH_LOG
+      - JUNGLE_LOG
+      - ACACIA_LOG
+      - DARK_OAK_LOG
+      - CRIMSON_STEM
+      - WARPED_STEM
+      - SPONGE
+      - GLASS
+      - SANDSTONE
+      - CHISELED_SANDSTONE
+      - CUT_SANDSTONE
+    1:
+      - STONE
